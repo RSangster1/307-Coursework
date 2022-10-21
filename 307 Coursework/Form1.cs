@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Configuration;
 
 namespace _307_Coursework
 {
@@ -57,7 +58,9 @@ namespace _307_Coursework
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
+            // TODO: This line of code loads data into the 'mssql2003115DataSet.Assets' table. You can move, or remove it, as needed.
+            this.assetsTableAdapter.Fill(this.mssql2003115DataSet.Assets);
+
         }
 
         private void connectionBox_CheckedChanged(object sender, EventArgs e)
@@ -65,34 +68,80 @@ namespace _307_Coursework
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Show();
 
+
+        private void assetsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.assetsBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.mssql2003115DataSet);
+
+        }
+
+        private void InsertBTN_Click(object sender, EventArgs e)
+        {
             SqlConnection conn;
 
             string connString = "Data Source = tolmount.abertay.ac.uk; Initial Catalog = mssql2003115; User ID = mssql2003115; Password = pAK3EFv2db";
 
             conn = new SqlConnection(connString);
-
-            SqlDataAdapter da = new SqlDataAdapter("Select * from[mssql2003115].[dbo].[Assets]", conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "Assets");
-            dataGridView1.DataSource = ds.Tables["Assets"].DefaultView;
+            conn.Open();
 
 
+            string query = "";
+            var Insert1 = "";
+            var Insert2 = "";
+            var Insert3 = "";
+            var Insert4 = "";
+            var Insert5 = "";
+            var Insert6 = "";
+            var Insert7 = "";
+            var Insert8 = "";
 
+            Insert1 = assetIDTextBox.Text;
+            Insert2 = systemNameTextBox.Text;
+            Insert3 = modelTextBox.Text;
+            Insert4 = manufacturerTextBox.Text;
+            Insert5 = typeTextBox.Text;
+            Insert6 = iPAddressTextBox.Text;
+            Insert7 = purchaseDateDateTimePicker.Text;
+            Insert8 = noteTextBox.Text;
 
-            
+            query = "INSERT INTO [mssql2003115].[dbo].[Assets] VALUES ('" + Insert1 + "' , '" + Insert2 + "' , '" + Insert3 + "' , '" + Insert4 + "' , '" + Insert5 + "' , '" + Insert6 + "' , '" + Insert7 + "' ,'" + Insert8 + "')";
 
-          
+            SqlCommand command = new SqlCommand(query);
+            command.Connection = conn;
+            SqlDataReader data = command.ExecuteReader();
+            MessageBox.Show("Asset Created with ID: " + Insert1 + ".");
+            conn.Close();
         }
 
-        
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void UpdateBTN_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void DeleteBTN_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn;
+
+            string connString = "Data Source = tolmount.abertay.ac.uk; Initial Catalog = mssql2003115; User ID = mssql2003115; Password = pAK3EFv2db";
+
+            conn = new SqlConnection(connString);
+            conn.Open();
+
+            string query = "";
+            int ID = assetsDataGridView.CurrentCell.RowIndex + 1;
+
+            query = "DELETE FROM [mssql2003115].[dbo].[Assets] WHERE AssetID = '"+ ID +  "'";
+            
+            SqlCommand command = new SqlCommand(query);
+            command.Connection = conn;
+            SqlDataReader data = command.ExecuteReader();
+            conn.Close();
+
+            assetsDataGridView.Rows.RemoveAt(ID);
+        }
+            
     }
 }
