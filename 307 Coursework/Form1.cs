@@ -123,6 +123,7 @@ namespace _307_Coursework
 
         private void DeleteBTN_Click(object sender, EventArgs e)
         {
+            assetsDataGridView.Rows.RemoveAt(ID);
             SqlConnection conn;
 
             string connString = "Data Source = tolmount.abertay.ac.uk; Initial Catalog = mssql2003115; User ID = mssql2003115; Password = pAK3EFv2db";
@@ -140,8 +141,11 @@ namespace _307_Coursework
             SqlDataReader data = command.ExecuteReader();
             conn.Close();
 
-            assetsDataGridView.Rows.RemoveAt(ID);
         }
-            
+
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            assetsDataGridView.Refresh();
+        }
     }
 }

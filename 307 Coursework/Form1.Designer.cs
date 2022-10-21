@@ -78,6 +78,7 @@ namespace _307_Coursework
             this.InsertBTN = new System.Windows.Forms.Button();
             this.UpdateBTN = new System.Windows.Forms.Button();
             this.DeleteBTN = new System.Windows.Forms.Button();
+            this.Refresh = new System.Windows.Forms.Button();
             assetIDLabel = new System.Windows.Forms.Label();
             systemNameLabel = new System.Windows.Forms.Label();
             modelLabel = new System.Windows.Forms.Label();
@@ -502,11 +503,22 @@ namespace _307_Coursework
             this.DeleteBTN.UseVisualStyleBackColor = true;
             this.DeleteBTN.Click += new System.EventHandler(this.DeleteBTN_Click);
             // 
+            // Refresh
+            // 
+            this.Refresh.Location = new System.Drawing.Point(782, 9);
+            this.Refresh.Name = "Refresh";
+            this.Refresh.Size = new System.Drawing.Size(75, 23);
+            this.Refresh.TabIndex = 23;
+            this.Refresh.Text = "Refresh";
+            this.Refresh.UseVisualStyleBackColor = true;
+            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 571);
+            this.Controls.Add(this.Refresh);
             this.Controls.Add(this.DeleteBTN);
             this.Controls.Add(this.UpdateBTN);
             this.Controls.Add(this.InsertBTN);
@@ -584,6 +596,7 @@ namespace _307_Coursework
         private System.Windows.Forms.Button InsertBTN;
         private System.Windows.Forms.Button UpdateBTN;
         private System.Windows.Forms.Button DeleteBTN;
+        private System.Windows.Forms.Button Refresh;
     }
 }
 
