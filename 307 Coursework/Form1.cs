@@ -118,12 +118,45 @@ namespace _307_Coursework
 
         private void UpdateBTN_Click(object sender, EventArgs e)
         {
+            SqlConnection conn;
 
+            string connString = "Data Source = tolmount.abertay.ac.uk; Initial Catalog = mssql2003115; User ID = mssql2003115; Password = pAK3EFv2db";
+
+            conn = new SqlConnection(connString);
+            conn.Open();
+
+
+            string query = "";
+            var Insert1 = "";
+            var Insert2 = "";
+            var Insert3 = "";
+            var Insert4 = "";
+            var Insert5 = "";
+            var Insert6 = "";
+            var Insert7 = "";
+            var Insert8 = "";
+
+            Insert1 = assetIDTextBox.Text;
+            Insert2 = systemNameTextBox.Text;
+            Insert3 = modelTextBox.Text;
+            Insert4 = manufacturerTextBox.Text;
+            Insert5 = typeTextBox.Text;
+            Insert6 = iPAddressTextBox.Text;
+            Insert7 = purchaseDateDateTimePicker.Text;
+            Insert8 = noteTextBox.Text;
+
+            query = "UPDATE [mssql2003115].[dbo].[Assets] SET (AssetID='" + Insert1 + "',SystemName='" + Insert2 + "',Model='" + Insert3 + "',Manufacturer='" + Insert4 + "',Type'" + Insert5 + "',IPAddress='" + Insert6 + "',PurchaseDate='" + Insert7 + "',Note='" + Insert8 + "') WHERE AssetID = '" + Insert1 + "'";
+
+            SqlCommand command = new SqlCommand(query);
+            command.Connection = conn;
+            SqlDataReader data = command.ExecuteReader();
+            MessageBox.Show("Asset Updated with ID: " + Insert1 + ".");
+            conn.Close();
         }
 
         private void DeleteBTN_Click(object sender, EventArgs e)
         {
-            assetsDataGridView.Rows.RemoveAt(ID);
+
             SqlConnection conn;
 
             string connString = "Data Source = tolmount.abertay.ac.uk; Initial Catalog = mssql2003115; User ID = mssql2003115; Password = pAK3EFv2db";
@@ -140,11 +173,20 @@ namespace _307_Coursework
             command.Connection = conn;
             SqlDataReader data = command.ExecuteReader();
             conn.Close();
+            try
+            {
+                assetsDataGridView.Rows.RemoveAt(ID);
+            }
+            catch
+            {
 
+            }
+            MessageBox.Show("Asset Deleted with ID: " + ID + ".");
         }
 
         private void Refresh_Click(object sender, EventArgs e)
         {
+            this.assetsTableAdapter.Fill(this.mssql2003115DataSet.Assets);
             assetsDataGridView.Refresh();
         }
     }
