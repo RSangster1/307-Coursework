@@ -45,7 +45,6 @@ namespace _307_Coursework
             this.assetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mssql2003115DataSet = new _307_Coursework.mssql2003115DataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -54,8 +53,6 @@ namespace _307_Coursework
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.assetsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.assetIDTextBox = new System.Windows.Forms.TextBox();
             this.systemNameTextBox = new System.Windows.Forms.TextBox();
             this.modelTextBox = new System.Windows.Forms.TextBox();
@@ -183,7 +180,7 @@ namespace _307_Coursework
             this.assetsBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
             this.assetsBindingNavigator.BindingSource = this.assetsBindingSource;
             this.assetsBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.assetsBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.assetsBindingNavigator.DeleteItem = null;
             this.assetsBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -194,10 +191,7 @@ namespace _307_Coursework
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.assetsBindingNavigatorSaveItem,
-            this.toolStripButton1});
+            this.bindingNavigatorAddNewItem});
             this.assetsBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.assetsBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.assetsBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -234,15 +228,6 @@ namespace _307_Coursework
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -304,24 +289,6 @@ namespace _307_Coursework
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // assetsBindingNavigatorSaveItem
-            // 
-            this.assetsBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.assetsBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("assetsBindingNavigatorSaveItem.Image")));
-            this.assetsBindingNavigatorSaveItem.Name = "assetsBindingNavigatorSaveItem";
-            this.assetsBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.assetsBindingNavigatorSaveItem.Text = "Save Data";
-            this.assetsBindingNavigatorSaveItem.Click += new System.EventHandler(this.assetsBindingNavigatorSaveItem_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // assetIDTextBox
             // 
@@ -565,7 +532,6 @@ namespace _307_Coursework
         private System.Windows.Forms.BindingNavigator assetsBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
@@ -574,8 +540,6 @@ namespace _307_Coursework
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton assetsBindingNavigatorSaveItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.TextBox assetIDTextBox;
         private System.Windows.Forms.TextBox systemNameTextBox;
         private System.Windows.Forms.TextBox modelTextBox;
