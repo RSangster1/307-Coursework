@@ -173,14 +173,6 @@ namespace _307_Coursework
             command.Connection = conn;
             SqlDataReader data = command.ExecuteReader();
             conn.Close();
-            try
-            {
-                assetsDataGridView.Rows.RemoveAt(ID);
-            }
-            catch
-            {
-
-            }
             MessageBox.Show("Asset Deleted with ID: " + ID + ".");
         }
 
