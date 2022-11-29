@@ -97,6 +97,7 @@ namespace _307_Coursework
             var Insert6 = "";
             var Insert7 = "";
             var Insert8 = "";
+            var Insert9 = "";
 
             Insert1 = assetIDTextBox.Text;
             Insert2 = systemNameTextBox.Text;
@@ -106,8 +107,9 @@ namespace _307_Coursework
             Insert6 = iPAddressTextBox.Text;
             Insert7 = purchaseDateDateTimePicker.Text;
             Insert8 = noteTextBox.Text;
+            Insert9 = OSTextBox.Text;
 
-            query = "INSERT INTO [mssql2003115].[dbo].[Assets] VALUES ('" + Insert1 + "' , '" + Insert2 + "' , '" + Insert3 + "' , '" + Insert4 + "' , '" + Insert5 + "' , '" + Insert6 + "' , '" + Insert7 + "' ,'" + Insert8 + "')";
+            query = "INSERT INTO [mssql2003115].[dbo].[Assets] VALUES ('" + Insert1 + "' , '" + Insert2 + "' , '" + Insert3 + "' , '" + Insert4 + "' , '" + Insert5 + "' , '" + Insert6 + "' , '" + Insert7 + "' ,'" + Insert8 + "' ,'" + Insert9 + "')";
 
             SqlCommand command = new SqlCommand(query);
             command.Connection = conn;
@@ -135,6 +137,7 @@ namespace _307_Coursework
             var Insert6 = "";
             var Insert7 = "";
             var Insert8 = "";
+            var Insert9 = "";
 
             Insert1 = assetIDTextBox.Text;
             Insert2 = systemNameTextBox.Text;
@@ -144,6 +147,8 @@ namespace _307_Coursework
             Insert6 = iPAddressTextBox.Text;
             Insert7 = purchaseDateDateTimePicker.Text;
             Insert8 = noteTextBox.Text;
+            Insert9 = OSTextBox.Text;
+
 
             query = "UPDATE [mssql2003115].[dbo].[Assets] SET (AssetID='" + Insert1 + "',SystemName='" + Insert2 + "',Model='" + Insert3 + "',Manufacturer='" + Insert4 + "',Type'" + Insert5 + "',IPAddress='" + Insert6 + "',PurchaseDate='" + Insert7 + "',Note='" + Insert8 + "') WHERE AssetID = '" + Insert1 + "'";
 
@@ -173,6 +178,7 @@ namespace _307_Coursework
             command.Connection = conn;
             SqlDataReader data = command.ExecuteReader();
             conn.Close();
+          
             MessageBox.Show("Asset Deleted with ID: " + ID + ".");
         }
 
@@ -180,6 +186,31 @@ namespace _307_Coursework
         {
             this.assetsTableAdapter.Fill(this.mssql2003115DataSet.Assets);
             assetsDataGridView.Refresh();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void purchaseDateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void noteTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void operatingSystemLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void operatingSystemTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

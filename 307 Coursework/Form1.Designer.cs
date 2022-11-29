@@ -39,11 +39,10 @@ namespace _307_Coursework
             System.Windows.Forms.Label purchaseDateLabel;
             System.Windows.Forms.Label noteLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.Label operatingSystemLabel;
             this.connectionBox = new System.Windows.Forms.CheckBox();
             this.assetsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.assetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mssql2003115DataSet = new _307_Coursework.mssql2003115DataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -60,10 +59,12 @@ namespace _307_Coursework
             this.iPAddressTextBox = new System.Windows.Forms.TextBox();
             this.manufacturerTextBox = new System.Windows.Forms.TextBox();
             this.purchaseDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.assetsTableAdapter = new _307_Coursework.mssql2003115DataSetTableAdapters.AssetsTableAdapter();
-            this.tableAdapterManager = new _307_Coursework.mssql2003115DataSetTableAdapters.TableAdapterManager();
             this.noteTextBox = new System.Windows.Forms.TextBox();
             this.assetsDataGridView = new System.Windows.Forms.DataGridView();
+            this.InsertBTN = new System.Windows.Forms.Button();
+            this.UpdateBTN = new System.Windows.Forms.Button();
+            this.DeleteBTN = new System.Windows.Forms.Button();
+            this.Refresh = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,10 +73,12 @@ namespace _307_Coursework
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InsertBTN = new System.Windows.Forms.Button();
-            this.UpdateBTN = new System.Windows.Forms.Button();
-            this.DeleteBTN = new System.Windows.Forms.Button();
-            this.Refresh = new System.Windows.Forms.Button();
+            this.assetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mssql2003115DataSet = new _307_Coursework.mssql2003115DataSet();
+            this.assetsTableAdapter = new _307_Coursework.mssql2003115DataSetTableAdapters.AssetsTableAdapter();
+            this.tableAdapterManager = new _307_Coursework.mssql2003115DataSetTableAdapters.TableAdapterManager();
+            this.OperatingSystem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OSTextBox = new System.Windows.Forms.TextBox();
             assetIDLabel = new System.Windows.Forms.Label();
             systemNameLabel = new System.Windows.Forms.Label();
             modelLabel = new System.Windows.Forms.Label();
@@ -84,11 +87,12 @@ namespace _307_Coursework
             manufacturerLabel = new System.Windows.Forms.Label();
             purchaseDateLabel = new System.Windows.Forms.Label();
             noteLabel = new System.Windows.Forms.Label();
+            operatingSystemLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.assetsBindingNavigator)).BeginInit();
             this.assetsBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.assetsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mssql2003115DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // assetIDLabel
@@ -167,7 +171,7 @@ namespace _307_Coursework
             // 
             this.connectionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.connectionBox.AutoSize = true;
-            this.connectionBox.Location = new System.Drawing.Point(12, 533);
+            this.connectionBox.Location = new System.Drawing.Point(12, 540);
             this.connectionBox.Name = "connectionBox";
             this.connectionBox.Size = new System.Drawing.Size(78, 17);
             this.connectionBox.TabIndex = 0;
@@ -199,7 +203,7 @@ namespace _307_Coursework
             this.assetsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.assetsBindingNavigator.Name = "assetsBindingNavigator";
             this.assetsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.assetsBindingNavigator.Size = new System.Drawing.Size(895, 25);
+            this.assetsBindingNavigator.Size = new System.Drawing.Size(1043, 25);
             this.assetsBindingNavigator.TabIndex = 2;
             this.assetsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -211,16 +215,6 @@ namespace _307_Coursework
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // assetsBindingSource
-            // 
-            this.assetsBindingSource.DataMember = "Assets";
-            this.assetsBindingSource.DataSource = this.mssql2003115DataSet;
-            // 
-            // mssql2003115DataSet
-            // 
-            this.mssql2003115DataSet.DataSetName = "mssql2003115DataSet";
-            this.mssql2003115DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -341,20 +335,11 @@ namespace _307_Coursework
             // purchaseDateDateTimePicker
             // 
             this.purchaseDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.assetsBindingSource, "PurchaseDate", true));
-            this.purchaseDateDateTimePicker.Location = new System.Drawing.Point(471, 287);
+            this.purchaseDateDateTimePicker.Location = new System.Drawing.Point(471, 285);
             this.purchaseDateDateTimePicker.Name = "purchaseDateDateTimePicker";
             this.purchaseDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.purchaseDateDateTimePicker.TabIndex = 17;
-            // 
-            // assetsTableAdapter
-            // 
-            this.assetsTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.AssetsTableAdapter = this.assetsTableAdapter;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.UpdateOrder = _307_Coursework.mssql2003115DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.purchaseDateDateTimePicker.ValueChanged += new System.EventHandler(this.purchaseDateDateTimePicker_ValueChanged);
             // 
             // noteTextBox
             // 
@@ -363,6 +348,7 @@ namespace _307_Coursework
             this.noteTextBox.Name = "noteTextBox";
             this.noteTextBox.Size = new System.Drawing.Size(200, 20);
             this.noteTextBox.TabIndex = 19;
+            this.noteTextBox.TextChanged += new System.EventHandler(this.noteTextBox_TextChanged);
             // 
             // assetsDataGridView
             // 
@@ -376,13 +362,54 @@ namespace _307_Coursework
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8});
+            this.dataGridViewTextBoxColumn8,
+            this.OperatingSystem});
             this.assetsDataGridView.DataSource = this.assetsBindingSource;
             this.assetsDataGridView.Location = new System.Drawing.Point(0, 38);
             this.assetsDataGridView.Name = "assetsDataGridView";
             this.assetsDataGridView.ReadOnly = true;
-            this.assetsDataGridView.Size = new System.Drawing.Size(895, 220);
+            this.assetsDataGridView.Size = new System.Drawing.Size(964, 220);
             this.assetsDataGridView.TabIndex = 19;
+            // 
+            // InsertBTN
+            // 
+            this.InsertBTN.Location = new System.Drawing.Point(863, 534);
+            this.InsertBTN.Name = "InsertBTN";
+            this.InsertBTN.Size = new System.Drawing.Size(75, 23);
+            this.InsertBTN.TabIndex = 20;
+            this.InsertBTN.Text = "Insert";
+            this.InsertBTN.UseVisualStyleBackColor = true;
+            this.InsertBTN.Click += new System.EventHandler(this.InsertBTN_Click);
+            // 
+            // UpdateBTN
+            // 
+            this.UpdateBTN.Location = new System.Drawing.Point(782, 534);
+            this.UpdateBTN.Name = "UpdateBTN";
+            this.UpdateBTN.Size = new System.Drawing.Size(75, 23);
+            this.UpdateBTN.TabIndex = 21;
+            this.UpdateBTN.Text = "Update";
+            this.UpdateBTN.UseVisualStyleBackColor = true;
+            this.UpdateBTN.Click += new System.EventHandler(this.UpdateBTN_Click);
+            // 
+            // DeleteBTN
+            // 
+            this.DeleteBTN.Location = new System.Drawing.Point(701, 534);
+            this.DeleteBTN.Name = "DeleteBTN";
+            this.DeleteBTN.Size = new System.Drawing.Size(75, 23);
+            this.DeleteBTN.TabIndex = 22;
+            this.DeleteBTN.Text = "Delete";
+            this.DeleteBTN.UseVisualStyleBackColor = true;
+            this.DeleteBTN.Click += new System.EventHandler(this.DeleteBTN_Click);
+            // 
+            // Refresh
+            // 
+            this.Refresh.Location = new System.Drawing.Point(889, 9);
+            this.Refresh.Name = "Refresh";
+            this.Refresh.Size = new System.Drawing.Size(75, 23);
+            this.Refresh.TabIndex = 23;
+            this.Refresh.Text = "Refresh";
+            this.Refresh.UseVisualStyleBackColor = true;
+            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -440,51 +467,60 @@ namespace _307_Coursework
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // InsertBTN
+            // assetsBindingSource
             // 
-            this.InsertBTN.Location = new System.Drawing.Point(782, 529);
-            this.InsertBTN.Name = "InsertBTN";
-            this.InsertBTN.Size = new System.Drawing.Size(75, 23);
-            this.InsertBTN.TabIndex = 20;
-            this.InsertBTN.Text = "Insert";
-            this.InsertBTN.UseVisualStyleBackColor = true;
-            this.InsertBTN.Click += new System.EventHandler(this.InsertBTN_Click);
+            this.assetsBindingSource.DataMember = "Assets";
+            this.assetsBindingSource.DataSource = this.mssql2003115DataSet;
             // 
-            // UpdateBTN
+            // mssql2003115DataSet
             // 
-            this.UpdateBTN.Location = new System.Drawing.Point(701, 529);
-            this.UpdateBTN.Name = "UpdateBTN";
-            this.UpdateBTN.Size = new System.Drawing.Size(75, 23);
-            this.UpdateBTN.TabIndex = 21;
-            this.UpdateBTN.Text = "Update";
-            this.UpdateBTN.UseVisualStyleBackColor = true;
-            this.UpdateBTN.Click += new System.EventHandler(this.UpdateBTN_Click);
+            this.mssql2003115DataSet.DataSetName = "mssql2003115DataSet";
+            this.mssql2003115DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // DeleteBTN
+            // assetsTableAdapter
             // 
-            this.DeleteBTN.Location = new System.Drawing.Point(620, 529);
-            this.DeleteBTN.Name = "DeleteBTN";
-            this.DeleteBTN.Size = new System.Drawing.Size(75, 23);
-            this.DeleteBTN.TabIndex = 22;
-            this.DeleteBTN.Text = "Delete";
-            this.DeleteBTN.UseVisualStyleBackColor = true;
-            this.DeleteBTN.Click += new System.EventHandler(this.DeleteBTN_Click);
+            this.assetsTableAdapter.ClearBeforeFill = true;
             // 
-            // Refresh
+            // tableAdapterManager
             // 
-            this.Refresh.Location = new System.Drawing.Point(782, 9);
-            this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(75, 23);
-            this.Refresh.TabIndex = 23;
-            this.Refresh.Text = "Refresh";
-            this.Refresh.UseVisualStyleBackColor = true;
-            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
+            this.tableAdapterManager.AccountTableAdapter = null;
+            this.tableAdapterManager.AssetsTableAdapter = this.assetsTableAdapter;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.UpdateOrder = _307_Coursework.mssql2003115DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // OperatingSystem
+            // 
+            this.OperatingSystem.DataPropertyName = "OperatingSystem";
+            this.OperatingSystem.HeaderText = "OperatingSystem";
+            this.OperatingSystem.Name = "OperatingSystem";
+            this.OperatingSystem.ReadOnly = true;
+            // 
+            // operatingSystemLabel
+            // 
+            operatingSystemLabel.AutoSize = true;
+            operatingSystemLabel.Location = new System.Drawing.Point(434, 340);
+            operatingSystemLabel.Name = "operatingSystemLabel";
+            operatingSystemLabel.Size = new System.Drawing.Size(25, 13);
+            operatingSystemLabel.TabIndex = 23;
+            operatingSystemLabel.Text = "OS:";
+            operatingSystemLabel.Click += new System.EventHandler(this.operatingSystemLabel_Click);
+            // 
+            // OSTextBox
+            // 
+            this.OSTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.assetsBindingSource, "OperatingSystem", true));
+            this.OSTextBox.Location = new System.Drawing.Point(471, 337);
+            this.OSTextBox.Name = "OSTextBox";
+            this.OSTextBox.Size = new System.Drawing.Size(200, 20);
+            this.OSTextBox.TabIndex = 24;
+            this.OSTextBox.TextChanged += new System.EventHandler(this.operatingSystemTextBox_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 571);
+            this.ClientSize = new System.Drawing.Size(1043, 578);
+            this.Controls.Add(operatingSystemLabel);
+            this.Controls.Add(this.OSTextBox);
             this.Controls.Add(this.Refresh);
             this.Controls.Add(this.DeleteBTN);
             this.Controls.Add(this.UpdateBTN);
@@ -514,9 +550,9 @@ namespace _307_Coursework
             ((System.ComponentModel.ISupportInitialize)(this.assetsBindingNavigator)).EndInit();
             this.assetsBindingNavigator.ResumeLayout(false);
             this.assetsBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.assetsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mssql2003115DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assetsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -561,6 +597,8 @@ namespace _307_Coursework
         private System.Windows.Forms.Button UpdateBTN;
         private System.Windows.Forms.Button DeleteBTN;
         private System.Windows.Forms.Button Refresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OperatingSystem;
+        private System.Windows.Forms.TextBox OSTextBox;
     }
 }
 
